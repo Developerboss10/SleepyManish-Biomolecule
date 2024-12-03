@@ -397,6 +397,13 @@
     <div class="content" id="comment-section">
         <h2>Comment Box</h2>
         <form id="commentForm">
+            <script src="https://utteranc.es/client.js"
+        repo="[ENTER REPO HERE]"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
             <textarea placeholder="Leave your comment here..." required></textarea><br>
             <button type="submit">Submit Comment</button>
         </form>
@@ -503,13 +510,7 @@
             clearInterval(timer); // Clear timer interval
             timerRunning = false; // Set timer status
         });
-<script src="https://utteranc.es/client.js"
-        repo="[ENTER REPO HERE]"
-        issue-term="pathname"
-        theme="github-light"
-        crossorigin="anonymous"
-        async>
-</script>
+
         // Dark mode functionality
         darkModeToggle.addEventListener('click', () => {
             body.classList.toggle('dark-mode');
