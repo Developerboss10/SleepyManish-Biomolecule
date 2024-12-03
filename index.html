@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLEEPYMANISH BIOMOLECULE</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body.dark-mode {
+            background-color: #333;
+            color: #f4f4f4;
+        }
+
+        header {
+            background: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        nav {
+            margin: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            margin: 10px;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        #quiz {
+            background-color: #e7e7e7;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        body.dark-mode #quiz {
+            background-color: #555;
+        }
+
+        #comment-section {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #e7e7e7;
+            transition: background-color 0.3s;
+        }
+
+        body.dark-mode #comment-section {
+            background-color: #555;
+        }
+
+        .quiz-question {
+            margin-bottom: 10px;
+        }
+
+        .question-title {
+            font-weight: bold;
+        }
+
+        #timer {
+            font-size: 20px;
+            margin: 20px;
+        }
+
+        #retryButton {
+            display: none;
+        }
+
+        /* Popup styles */
+        #welcomePopup,
+        #completionPopup {
+            display: none;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            border: 2px solid #007bff;
+            padding: 20px;
+            z-index: 1000;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        body.dark-mode #welcomePopup,
+        body.dark-mode #completionPopup {
+            background-color: #444;
+            color: #f4f4f4;
+        }
+
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 500;
+        }
+
+        /* Smooth scroll for links */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>SLEEPYMANISH BIOMOLECULE</h1>
+        <button id="darkModeToggle">🌞 Toggle Dark Mode</button>
+    </header>
+
+    <div id="overlay"></div>
+    <div id="welcomePopup">
+        <h2>WELCOME TO SLEEPYMANISH BIOMOLECULE</h2>
+        <button id="closePopup">Close</button>
+    </div>
+
+    <div id="completionPopup">
+        <h2>Quiz Completed!</h2>
+        <p id="completionMessage"></p>
+        <button id="closeCompletionPopup">Close</button>
+    </div>
+
+    <nav>
+        <a href="#biomolecule">Biomolecule</a>
+        <a href="#timer">Timer</a>
+        <a href="#quiz">Quiz</a>
+        <a href="#comment-section">Comment</a>
+    </nav>
+
+    <div class="content" id="biomolecule">
+        <h2>Biomolecules: The Building Blocks of Life</h2>
+
+        <h3>1. Introduction to Biomolecules</h3>
+        <p>Biomolecules are organic molecules essential for life. They include carbohydrates, proteins, lipids, and nucleic acids. These molecules are synthesized in living organisms and perform various biological functions.</p>
+
+        <h3>2. Carbohydrates: Energy Providers</h3>
+        <p><strong>Definition:</strong> Carbohydrates are organic compounds made of carbon, hydrogen, and oxygen, typically in a 1:2:1 ratio.</p>
+        <p><strong>Types of Carbohydrates:</strong></p>
+        <ul>
+            <li>Monosaccharides (Simple sugars): Glucose, Fructose</li>
+            <li>Disaccharides (Two monosaccharides joined): Maltose, Sucrose</li>
+            <li>Polysaccharides (Long chains): Starch, Cellulose, Glycogen</li>
+        </ul>
+        <p><strong>Functions:</strong> Primary energy source (e.g., glucose), Structural component (e.g., cellulose in plants).</p>
+        <p><strong>Interesting Facts:</strong> Sucrose is a non-reducing sugar, while maltose and lactose are reducing sugars. Glycogen is the energy storage molecule in animals.</p>
+
+        <h3>3. Proteins: The Workhorses of Cells</h3>
+        <p><strong>Definition:</strong> Proteins are polymers of amino acids joined by peptide bonds.</p>
+        <p><strong>Structure of Proteins:</strong></p>
+        <ul>
+            <li>Primary structure: Sequence of amino acids.</li>
+            <li>Secondary structure: Alpha-helix or beta-pleated sheet formed by hydrogen bonding.</li>
+            <li>Tertiary structure: 3D folding stabilized by hydrogen bonds, disulfide bonds, and hydrophobic interactions.</li>
+            <li>Quaternary structure: Multiple polypeptides joined together (e.g., hemoglobin).</li>
+        </ul>
+        <p><strong>Functions:</strong> Enzymes (e.g., amylase for starch breakdown), Transport (e.g., hemoglobin carries oxygen), Structural (e.g., keratin in hair).</p>
+        <p><strong>Essential Amino Acids:</strong> Humans must obtain essential amino acids like methionine from their diet.</p>
+
+        <h3>4. Lipids: The Energy Reserves</h3>
+        <p><strong>Definition:</strong> Lipids are hydrophobic molecules, including fats, oils, and steroids.</p>
+        <p><strong>Types of Lipids:</strong></p>
+        <ul>
+            <li>Triglycerides: Fats stored in adipose tissue.</li>
+            <li>Phospholipids: Major components of cell membranes.</li>
+            <li>Steroids: Hormones like cholesterol.</li>
+        </ul>
+        <p><strong>Functions:</strong> Long-term energy storage; Structural components of membranes.</p>
+        <p><strong>Fun Fact:</strong> Phospholipids form the bilayer of cell membranes, with hydrophilic heads and hydrophobic tails.</p>
+
+        <h3>5. Nucleic Acids: The Blueprint of Life</h3>
+        <p><strong>Definition:</strong> Nucleic acids are polymers of nucleotides that store and transfer genetic information.</p>
+        <p><strong>Types of Nucleic Acids:</strong></p>
+        <ul>
+            <li>DNA (Deoxyribonucleic Acid): Double-helix structure discovered by Watson and Crick. Contains adenine (A), thymine (T), cytosine (C), and guanine (G). Adenine pairs with thymine, and cytosine pairs with guanine.</li>
+            <li>RNA (Ribonucleic Acid): Single-stranded molecule involved in protein synthesis. Contains adenine, uracil (U), cytosine, and guanine.</li>
+        </ul>
+        <p><strong>Functions:</strong> DNA: Stores genetic information; RNA: Helps in protein synthesis.</p>
+
+        <h3>6. Enzymes: The Biological Catalysts</h3>
+        <p>Enzymes are proteins that speed up biochemical reactions without being consumed. Example: Amylase breaks down starch into maltose.</p>
+        <p><strong>Properties of Enzymes:</strong> Highly specific to their substrate; Function is influenced by temperature and pH.</p>
+
+        <h3>7. Vitamins: Essential Micronutrients</h3>
+        <p>Vitamins are organic compounds required in small amounts for metabolic functions. Fat-soluble vitamins: A, D, E, and K. Water-soluble vitamins: B-complex and C.</p>
+        <p><strong>Example:</strong> Vitamin C (ascorbic acid) boosts immunity; Vitamin D aids calcium absorption.</p>
+
+        <h3>8. Glycolysis: The Energy Cycle</h3>
+        <p>Glycolysis is the breakdown of glucose into pyruvate, producing ATP. The first step is catalyzed by hexokinase, which converts glucose to glucose-6-phosphate.</p>
+    </div>
+
+    <div class="content" id="timer">
+        <span id="timerLabel">Timer: <span id="timerDisplay">45:00</span></span>
+        <button id="startTimer">Start Timer</button>
+    </div>
+
+    <div class="content" id="quiz">
+        <h2>Quiz</h2>
+        <form id="quizForm">
+            <h3>Objective Questions (20)</h3>
+
+            <!-- Objective Questions -->
+            <div class="quiz-question">
+                <span class="question-title">1. Which of the following is a disaccharide?</span><br>
+                <input type="radio" name="q1" value="A"> A) Glucose<br>
+                <input type="radio" name="q1" value="B"> B) Fructose<br>
+                <input type="radio" name="q1" value="C"> C) Maltose<br>
+                <input type="radio" name="q1" value="D"> D) Cellulose<br>
+            </div>
+
+            <div class="quiz-question">
+                <span class="question-title">2. The bond that links amino acids in a protein is called a:</span><br>
+                <input type="radio" name="q2" value="A"> A) Glycosidic bond<br>
+                <input type="radio" name="q2" value="B"> B) Peptide bond<br>
+                <input type="radio" name="q2" value="C"> C) Phosphodiester bond<br>
+                <input type="radio" name="q2" value="D"> D) Hydrogen bond<br>
+            </div>
+
+            <div class="quiz-question">
+                <span class="question-title">3. Which vitamin is also known as ascorbic acid?</span><br>
+                <input type="radio" name="q3" value="A"> A) Vitamin A<br>
+                <input type="radio" name="q3" value="B"> B) Vitamin C<br>
+                <input type="radio" name="q3" value="C"> C) Vitamin D<br>
+                <input type="radio" name="q3" value="D"> D) Vitamin K<br>
+            </div>
+
+            <div class="quiz-question">
+                <span class="question-title">4. Which carbohydrate is the primary energy source for cellular processes?</span><br>
+                <input type="radio" name="q4" value="A"> A) Sucrose<br>
+                <input type="radio" name="q4" value="B"> B) Glycogen<br>
+                <input type="radio" name="q4" value="C"> C) Glucose<br>
+                <input type="radio" name="q4" value="D"> D) Starch<br>
+            </div>
+
+            <div class="quiz-question">
+                <span class="question-title">5. What is the simplest amino acid?</span><br>
+                <input type="radio" name="q5" value="A"> A) Glycine<br>
+                <input type="radio" name="q5" value="B"> B) Alanine<br>
+                <input type="radio" name="q5" value="C"> C) Serine<br>
+                <input type="radio" name="q5" value="D"> D) Valine<br>
+            </div>
+
+            <div class="quiz-question">
+                <span class="question-title">6. Which of the following is a non-reducing sugar?</span><br>
+                <input type="radio" name="q6" value="A"> A) Sucrose<br>
+                <input type="radio" name="q6" value="B"> B) Glucose<br>
+                <input type="radio" name="q6" value="C"> C) Maltose<br>
+                <input type="radio" name="q6" value="D"> D) Lactose<br>
+            </div>
+
+            <div class="quiz-question">
+                <span class="question-title">7. In DNA, adenine pairs with:</span><br>
+                <input type="radio" name="q7" value="A"> A) Guanine<br>
+                <input type="radio" name="q7" value="B"> B) Thymine<br>
+                <input type="radio" name="q7" value="C"> C) Cytosine<br>
+                <input type="radio" name="q7" value="D"> D) Uracil<br>
+            </div>
+
+            <div class="quiz-question">
+                <span class="question-title">8. Which enzyme is responsible for the breakdown of starch into maltose?</span><br>
+                <input type="radio" name="q8" value="A"> A) Amylase<br>
+                <input type="radio" name="q8" value="B"> B) Protease<br>
+                <input type="radio" name="q8" value="C"> C) Lipase<br>
+                <input type="radio" name="q8" value="D"> D) Cellulase<br>
+            </div>
+
+            <div class="quiz-question">
+                <span class="question-title">9. The tertiary structure of a protein is stabilized by:</span><br>
+                <input type="radio" name="q9" value="A"> A) Hydrogen bonds<br>
+                <input type="radio" name="q9" value="B"> B) Disulfide bonds<br>
+                <input type="radio" name="q9" value="C"> C) Hydrophobic interactions<br>
+                <input type="radio" name="q9" value="D"> D) All of the above<br>
+            </div>
+
+            <div class="quiz-question">
+                <span class="question-title">10. Which of the following is a conjugated protein?</span><br>
+                <input type="radio" name="q10" value="A"> A) Hemoglobin<br>
+                <input type="radio" name="q10" value="B"> B) Insulin<br>
+                <input type="radio" name="q10" value="C"> C) Albumin<br>
+                <input type="radio" name="q10" value="D"> D) Keratin<br>
+            </div>
+
+            <div class="quiz-question">
+                <span class="question-title">11. Which of the following is an essential amino acid in humans?</span><br>
+                <input type="radio" name="q11" value="A"> A) Glycine<br>
+                <input type="radio" name="q11" value="B"> B) Alanine<br>
+                <input type="radio" name="q11" value="C"> C) Methionine<br>
+                <input type="radio" name="q11" value="D"> D) Serine<br>
+            </div>
+
+            <div class="quiz-question">
+                <span class="question-title">12. The pentose sugar in RNA is:</span><br>
+                <input type="radio" name="q12" value="A"> A) Deoxyribose<br>
+                <input type="radio" name="q12" value="B"> B) Ribose<br>
+                <input type="radio" name="q12" value="C"> C) Glucose<br>
+                <input type="radio" name="q12" value="D"> D) Mannose<br>
+            </div>
+
+            <div class="quiz-question">
+                <span class="question-title">13. Which type of lipids are major constituents of cell membranes?</span><br>
+                <input type="radio" name="q13" value="A"> A) Triglycerides<br>
+                <input type="radio" name="q13" value="B"> B) Phospholipids<br>
+                <input type="radio" name="q13" value="C"> C) Steroids<br>
+                <input type="radio" name="q13" value="D"> D) Waxes<br>
+            </div>
+
+            <div class="quiz-question">
+                <span class="question-title">14. Which vitamin is fat-soluble?</span><br>
+                <input type="radio" name="q14" value="A"> A) Vitamin B12<br>
+                <input type="radio" name="q14" value="B"> B) Vitamin C<br>
+                <input type="radio" name="q14" value="C"> C) Vitamin D<br>
+                <input type="radio" name="q14" value="D"> D) Vitamin B6<br>
+            </div>
+
+            <div class="quiz-question">
+                <span class="question-title">15. The sugar present in DNA is:</span><br>
+                <input type="radio" name="q15" value="A"> A) Ribose<br>
+                <input type="radio" name="q15" value="B"> B) Fructose<br>
+                <input type="radio" name="q15" value="C"> C) Glucose<br>
+                <input type="radio" name="q15" value="D"> D) Deoxyribose<br>
+            </div>
+
+            <div class="quiz-question">
+                <span class="question-title">16. Which of the following is a coenzyme?</span><br>
+                <input type="radio" name="q16" value="A"> A) NAD+<br>
+                <input type="radio" name="q16" value="B"> B) ATP<br>
+                <input type="radio" name="q16" value="C"> C) DNA<br>
+                <input type="radio" name="q16" value="D"> D) RNA<br>
+            </div>
+
+            <div class="quiz-question">
+                <span class="question-title">17. The number of peptide bonds in a hexapeptide is:</span><br>
+                <input type="radio" name="q17" value="A"> A) 4<br>
+                <input type="radio" name="q17" value="B"> B) 5<br>
+                <input type="radio" name="q17" value="C"> C) 6<br>
+                <input type="radio" name="q17" value="D"> D) 7<br>
+            </div>
+
+            <div class="quiz-question">
+                <span class="question-title">18. The first step in glycolysis is catalyzed by:</span><br>
+                <input type="radio" name="q18" value="A"> A) Hexokinase<br>
+                <input type="radio" name="q18" value="B"> B) Phosphofructokinase<br>
+                <input type="radio" name="q18" value="C"> C) Aldolase<br>
+                <input type="radio" name="q18" value="D"> D) Enolase<br>
+            </div>
+
+            <div class="quiz-question">
+                <span class="question-title">19. The double helix model of DNA was proposed by:</span><br>
+                <input type="radio" name="q19" value="A"> A) Watson and Crick<br>
+                <input type="radio" name="q19" value="B"> B) Franklin and Wilkins<br>
+                <input type="radio" name="q19" value="C"> C) Chargaff and Avery<br>
+                <input type="radio" name="q19" value="D"> D) Hershey and Chase<br>
+            </div>
+
+            <div class="quiz-question">
+                <span class="question-title">20. The ratio of adenine to thymine in DNA is always equal to 1 because of:</span><br>
+                <input type="radio" name="q20" value="A"> A) Complementary base pairing<br>
+                <input type="radio" name="q20" value="B"> B) Sugar-phosphate backbone<br>
+                <input type="radio" name="q20" value="C"> C) Helical structure of DNA<br>
+                <input type="radio" name="q20" value="D"> D) Hydrogen bonding<br>
+            </div>
+
+            <button type="submit">Submit Quiz</button>
+            <button id="retryButton">Retry Quiz</button>
+        </form>
+        <div id="result"></div>
+    </div>
+
+    <div class="content" id="comment-section">
+        <h2>Comment Box</h2>
+        <form id="commentForm">
+            <textarea placeholder="Leave your comment here..." required></textarea><br>
+            <button type="submit">Submit Comment</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>© 2024 SleepyManish. Contact: <a href="mailto:manishworld5454@gmail.com">manishworld5454@gmail.com</a></p>
+        <p>Website Created By Manish Dhangar</p>
+    </footer>
+
+    <script>
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+        const overlay = document.getElementById('overlay');
+        const welcomePopup = document.getElementById('welcomePopup');
+        const closePopupButton = document.getElementById('closePopup');
+        const completionPopup = document.getElementById('completionPopup');
+        const closeCompletionPopupButton = document.getElementById('closeCompletionPopup');
+        const timerDisplay = document.getElementById('timerDisplay');
+
+        // Show welcome popup
+        window.onload = function () {
+            overlay.style.display = 'block';
+            welcomePopup.style.display = 'block';
+        };
+
+        closePopupButton.addEventListener('click', function () {
+            overlay.style.display = 'none';
+            welcomePopup.style.display = 'none';
+        });
+
+        // Timer functionality
+        let timer;
+        let timeLeft = 2700; // 45 minutes in seconds
+        let timerRunning = false;
+
+        document.getElementById("startTimer").addEventListener("click", function () {
+            if (timerRunning) return; // Prevent multiple timer starts
+            clearInterval(timer);
+            timeLeft = 2700; // Reset timer
+            timerDisplay.innerText = formatTime(timeLeft);
+            timerRunning = true;
+            timer = setInterval(function () {
+                timeLeft--;
+                timerDisplay.innerText = formatTime(timeLeft);
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    timerRunning = false;
+                    alert("Time is up!");
+                }
+            }, 1000);
+        });
+
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            return `${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+        }
+
+        // Quiz functionality
+        document.getElementById('quizForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            clearInterval(timer); // Stop the timer
+            timerRunning = false;
+
+            let score = 0;
+            const answers = {
+                q1: 'C', q2: 'B', q3: 'B', q4: 'C', q5: 'A',
+                q6: 'A', q7: 'B', q8: 'A', q9: 'D', q10: 'A',
+                q11: 'C', q12: 'B', q13: 'B', q14: 'C', q15: 'D',
+                q16: 'A', q17: 'B', q18: 'A', q19: 'A', q20: 'A',
+            };
+
+            for (let i = 1; i <= 20; i++) {
+                const selectedAnswer = document.querySelector(`input[name="q${i}"]:checked`);
+                if (selectedAnswer && selectedAnswer.value === answers[`q${i}`]) {
+                    score += 4; // Correct answer
+                }
+            }
+
+            const timeTaken = 2700 - timeLeft; // Calculate time taken
+            const minutesTaken = Math.floor(timeTaken / 60);
+            const secondsTaken = timeTaken % 60;
+
+            document.getElementById('result').innerText = `Your score: ${score} / ${20 * 4}`;
+            const completionMessage = `You completed the quiz in ${minutesTaken} minutes and ${secondsTaken} seconds.`;
+            document.getElementById('completionMessage').innerText = completionMessage;
+            completionPopup.style.display = 'block'; // Show completion popup
+            overlay.style.display = 'block'; // Show overlay
+            document.getElementById('retryButton').style.display = 'inline'; // Show retry button
+        });
+
+        closeCompletionPopupButton.addEventListener('click', function () {
+            overlay.style.display = 'none';
+            completionPopup.style.display = 'none';
+        });
+
+        document.getElementById('retryButton').addEventListener('click', function () {
+            document.getElementById('quizForm').reset(); // Reset quiz form
+            document.getElementById('result').innerText = ''; // Clear result
+            this.style.display = 'none'; // Hide retry button
+            timeLeft = 2700; // Reset timer
+            timerDisplay.innerText = formatTime(timeLeft); // Reset display
+            clearInterval(timer); // Clear timer interval
+            timerRunning = false; // Set timer status
+        });
+
+        // Dark mode functionality
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            darkModeToggle.textContent = body.classList.contains('dark-mode') ? '🌚 Toggle Light Mode' : '🌞 Toggle Dark Mode';
+        });
+    </script>
+</body>
+
+</html>
